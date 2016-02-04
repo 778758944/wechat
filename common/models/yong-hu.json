@@ -1,0 +1,32 @@
+{
+  "name": "YongHu",
+  "base": "PersistedModel",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "nickname": {
+      "type": "string"
+    },
+    "sex": {
+      "type": "number"
+    },
+    "city": {
+      "type": "string"
+    },
+    "headimg": {
+      "type": "string"
+    },
+    "openid": {
+      "type": "string",
+      "id": true,
+      "required": true,
+      "index": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
