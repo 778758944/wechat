@@ -187,7 +187,19 @@
 
         jssdk:function(req,res){
             url=req.body.url;
-            console.log(url);
+            multi_fn.getToken(Token,function(token){
+                var options={
+                    hostname:"api.weixin.qq.com",
+                    method:"GET",
+                    path:"/cgi-bin/ticket/getticket?access_token="+token+"&type=jsapi"
+                },
+
+                var request=https.request(options,function(result){
+                    multi_fn.deal_res(result,function(result){
+                        console.log(result);
+                    })
+                })
+            })
         }
 
 
