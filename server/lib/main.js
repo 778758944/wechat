@@ -183,6 +183,11 @@
                         request.write(menu);
                         request.end();
                  })
+        },
+
+        jssdk:function(req,res){
+            url=req.body.url;
+            console.log(url);
         }
 
 
