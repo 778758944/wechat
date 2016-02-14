@@ -105,7 +105,7 @@ var add_kf=function(account,nickname,passwd,model){
 }
 
 var signature=function(noncert,jsapi,timestamp,url){
-	var sign_str="jsapi_ticket="+jsapi+"&noncert="+noncert+"&timestamp="+timestamp+"&url="+url;
+	var sign_str="jsapi_ticket="+jsapi+"&noncestr="+noncert+"&timestamp="+timestamp+"&url="+url;
 	console.log(sign_str);
 	var sha1=crypto.createHash("sha1");
 	sha1.update(sign_str);
