@@ -190,6 +190,24 @@
         jssdk:function(req,res){
             url=req.body.url;
             multi_fn.jssdk(JsApi,url,Token,res);
+        },
+
+        getcity:function(req,res){
+            var lat=req.body.lat;
+            var lng=req.body.lng;
+            var option={
+                hostname:"api.map.baidu.com",
+                method:"GET",
+                path:"/geocoder/v2?ak=hlyy7lEiMdaw34ThSKzGjGjw&location="+lat+","+lng+"&output=json";
+            }
+
+            var request=http.request(option,function(result){
+                multi_fn.deal_res(result,function(result){
+                    console.log(result);
+                    res.json(result);
+                })
+            });
+            request.end();
         }
 
 
