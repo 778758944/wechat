@@ -133,7 +133,7 @@ var jssdk=function(model,url,Token){
 		    };
 
 		    var request=https.request(options,function(result){
-		        multi_fn.deal_res(result,function(result){
+		        deal_res(result,function(result){
 		            console.log(result);
 		            console.log(typeof result);
 		            return signature(noncert,data[0].ticket,new Date().getTime(),url);
