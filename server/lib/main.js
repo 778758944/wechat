@@ -64,7 +64,7 @@
         },
 
         getAuthor:function(req,res){
-                var url="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx383ded8a7aa722de&redirect_uri=http://77877q.6655.la/wx/author_token&response_type=code&scope=snsapi_userinfo&state=abc#wechat_redirect";
+                var url="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx383ded8a7aa722de&redirect_uri=http://wechat.xingwentao.top/wx/author_token&response_type=code&scope=snsapi_userinfo&state=abc#wechat_redirect";
                 res.redirect(url);
         },
         getAuthorToken:function(req,res){
