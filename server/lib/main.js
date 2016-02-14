@@ -68,6 +68,7 @@
                 res.redirect(url);
         },
         getAuthorToken:function(req,res){
+                console.log(req.query.code);
                 var code=req.query.code;
                 var option={
                         hostname:"api.weixin.qq.com",
