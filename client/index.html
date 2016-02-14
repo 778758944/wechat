@@ -11,41 +11,54 @@
 <script src="js/jquery.js"></script>
 <script>
     window.onload=function(){
-    	$.post("/jssdk",{
-			url:location.href
-		},function(data){
-			wx.config({
-				debug:true,
-				appId:data.appId,
-				timestamp:data.timestamp,
-				nonceStr:data.nonceStr,
-				signature:data.signature,
-				jsApiList:["onMenuShareTimeline","openLocation","getLocation"]
-			});
-			wx.ready(function(){
-				wx.getLocation({
-					type:"wgs84",
-					success:function(res){
-						var latitude=res.latitude;
-						var longitude=res.longitude;
-						var showCity=function(res){
-							console.log(res);
-						}
+  //   	$.post("/jssdk",{
+		// 	url:location.href
+		// },function(data){
+		// 	wx.config({
+		// 		debug:true,
+		// 		appId:data.appId,
+		// 		timestamp:data.timestamp,
+		// 		nonceStr:data.nonceStr,
+		// 		signature:data.signature,
+		// 		jsApiList:["onMenuShareTimeline","openLocation","getLocation"]
+		// 	});
+		// 	wx.ready(function(){
+		// 		wx.getLocation({
+		// 			type:"wgs84",
+		// 			success:function(res){
+		// 				var latitude=res.latitude;
+		// 				var longitude=res.longitude;
+		// 				var showCity=function(res){
+		// 					console.log(res);
+		// 				}
 
-						$("#geo").click(function(){
-							var data={
-								lat:latitude,
-								lng:longitude
-							}
+		// 				$("#geo").click(function(){
+		// 					var data={
+		// 						lat:latitude,
+		// 						lng:longitude
+		// 					}
 
-							$.post("/getcity",data,function(data){
-								console.log(data);
-							})
-						})
-					}
-				})
-			})
-		});
+		// 					$.post("/getcity",data,function(data){
+		// 						console.log(data);
+		// 					})
+		// 				})
+		// 			}
+		// 		})
+		// 	})
+		// });
+
+		function jsonpCallback(result){
+			console.log(result);
+		}
+
+		var geourl="http://api.map.baidu.com/geocoder/v2/?ak=oPdhYNOi8cMkSNIh4t2F1rrH&output=json&location=31.22569,121.43966&coordtype=wgs84ll&pois=1";
+
+		var JSONP=document.createElement("script");
+		JSONP.type="text/javascript";
+		JSONP.src=geourl;
+		document.getElementsByTagName('head')[0].appendChild(JSONP);
+
+
 		
 		// var geourl="http://api.map.baidu.com/geocoder/v2/?ak=oPdhYNOi8cMkSNIh4t2F1rrH&output=json&location=31.22569,121.43966&coordtype=wgs84ll&pois=1";
 		// $.get(geourl,function(data){
