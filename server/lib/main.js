@@ -6,6 +6,7 @@
  */
  var loopback=require("loopback");
  var https=require("https");
+ var http=require("http");
  var multi_fn=require("../lib/accessToken.js");
  var Token=loopback.findModel("Token");
  var YongHu=loopback.findModel("YongHu");
