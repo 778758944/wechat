@@ -146,6 +146,7 @@ var jssdk=function(model,url,Token,res){
 		            console.log(result);
 		            console.log(typeof result);
 		            var data=signature(noncert,result.ticket,new Date().getTime(),url);
+		            console.dir(data);
 		            res.json(data);
 		        })
 		    });
