@@ -189,11 +189,7 @@
 
         jssdk:function(req,res){
             url=req.body.url;
-            console.log(url);
-            return {
-                name:jack
-            }
-            // return multi_fn.jssdk(JsApi,url,Token);
+            multi_fn.jssdk(JsApi,url,Token,res);
         }
 
 

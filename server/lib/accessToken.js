@@ -118,7 +118,7 @@ var signature=function(noncert,jsapi,timestamp,url){
 }
 
 
-var jssdk=function(model,url,Token){
+var jssdk=function(model,url,Token,res){
 	var noncert="xingwentao";
 	var jsapi_ticket=model.find(function(err,data){
 		if(err){
@@ -129,7 +129,9 @@ var jssdk=function(model,url,Token){
 			var expires=data[0].expires*1000;
 			var timeDiff=new Date()-data[0].time;
 			if(timeDiff<expires){
-				return signature=signature(noncert,data[0].ticket,new Date().getTime(),url);
+				var data=signature(noncert,data[0].ticket,new Date().getTime(),url);
+				console.log(data);
+				res.json(data);
 			}
 		}
 		getToken(Token,function(token){
@@ -143,7 +145,8 @@ var jssdk=function(model,url,Token){
 		        deal_res(result,function(result){
 		            console.log(result);
 		            console.log(typeof result);
-		            return signature(noncert,result.ticket,new Date().getTime(),url);
+		            var data=signature(noncert,result.ticket,new Date().getTime(),url);
+		            res.json(data);
 		        })
 		    });
 		    request.end();

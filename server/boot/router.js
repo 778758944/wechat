@@ -61,6 +61,8 @@ module.exports=function(app){
 		res.json(req.body);
 	});
 	router.post("/jssdk",main.jssdk);
+
+
 	app.use(router);
 }
 
