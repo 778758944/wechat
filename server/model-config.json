@@ -39,5 +39,11 @@
   "YongHu": {
     "dataSource": "wx",
     "public": true
+  },
+  "JsApi": {
+    "dataSource": "wx",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
   }
 }
