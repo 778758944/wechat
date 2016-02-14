@@ -15,6 +15,8 @@ var options={
 	method:"GET"
 }
 
+
+
 var deal_res=function(res,fn){
 	var chunks=[];
 	var size=0;
@@ -24,6 +26,7 @@ var deal_res=function(res,fn){
 	});
 	res.on("end",function(){
 		var final_buf=Buffer.concat(chunks,size);
+		console.log(final_buf.headers);
 		var resJson=JSON.parse(final_buf.toString());
 		fn(resJson);
 	});
