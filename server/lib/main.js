@@ -196,6 +196,8 @@
         getcity:function(req,res){
             var lat=req.body.lat;
             var lng=req.body.lng;
+            console.log(lat);
+            console.log(lng);
             var option={
                 hostname:"api.map.baidu.com",
                 method:"GET",
