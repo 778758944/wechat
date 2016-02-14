@@ -11,7 +11,6 @@
 <script src="js/jquery.js"></script>
 <script>
     window.onload=function(){
-    	alert("kk");
     	$.post("/jssdk",{
 			url:location.href
 		},function(data){
@@ -21,8 +20,19 @@
 				timestamp:data.timestamp,
 				nonceStr:data.nonceStr,
 				signature:data.signature,
-				jsApiList:["onMenuShareTimeline"]
+				jsApiList:["onMenuShareTimeline","openLocation","getLocation"]
 			});
+			wx.ready(function(){
+				wx.getLocation({
+					type:"wgs84",
+					success:function(res){
+						var latitude=res.latitude;
+						var longitude=res.longitude;
+						alert(latitude);
+						alert(longitude);
+					}
+				})
+			})
 		});
     }
 </script>
