@@ -144,7 +144,15 @@ var jssdk=function(model,url,Token,res){
 		    var request=https.request(options,function(result){
 		        deal_res(result,function(result){
 		            console.log(result);
-		            console.log(typeof result);
+		            result.id=1;
+		            result.time=new Date();
+		            model.upsert(result,function(err,data){
+		            	if(err){
+		            		console.log(err);
+		            		return;
+		            	}
+		            	console.log(data);
+		            });
 		            var data=signature(noncert,result.ticket,new Date().getTime(),url);
 		            console.dir(data);
 		            res.json(data);
