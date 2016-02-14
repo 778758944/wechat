@@ -61,7 +61,7 @@ module.exports=function(app){
 		res.json(req.body);
 	});
 	router.post("/jssdk",main.jssdk);
-	router.post("/getcity",mian.getcity);
+	router.post("/getcity",main.getcity);
 
 
 	app.use(router);
