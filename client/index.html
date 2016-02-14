@@ -10,6 +10,9 @@
 <script src='http://res.wx.qq.com/open/js/jweixin-1.0.0.js'></script>
 <script src="js/jquery.js"></script>
 <script>
+	var jsonpCallback=function(result){
+		console.log(result);
+	}
     window.onload=function(){
   //   	$.post("/jssdk",{
 		// 	url:location.href
@@ -47,11 +50,11 @@
 		// 	})
 		// });
 
-		var jsonpCallback=function(result){
-			console.log(result);
-		}
+		// var jsonpCallback=function(result){
+		// 	console.log(result);
+		// }
 
-		var geourl="http://api.map.baidu.com/geocoder/v2/?ak=oPdhYNOi8cMkSNIh4t2F1rrH&output=json&callback=console.log&location=31.22569,121.43966";
+		var geourl="http://api.map.baidu.com/geocoder/v2/?ak=oPdhYNOi8cMkSNIh4t2F1rrH&output=json&callback=jsonpCallback&location=31.22569,121.43966";
 
 		var JSONP=document.createElement("script");
 		JSONP.type="text/javascript";
