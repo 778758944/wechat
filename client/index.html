@@ -28,9 +28,12 @@
 					success:function(res){
 						var latitude=res.latitude;
 						var longitude=res.longitude;
-						wx.openLocation({
-							latitude:latitude,
-							longitude:longitude
+						var showCity=function(res){
+							console.log(res);
+						}
+						var url="http://api.map.baidu.com/geocoder/v2/?ak=oPdhYNOi8cMkSNIh4t2F1rrH&location="+latitude+","+longitude+"&output=json&pois=0&coordtype=wgs84ll";
+						$.get(url,function(data){
+							alert(JSON.stringify(data));
 						})
 					}
 				})
