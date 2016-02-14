@@ -11,7 +11,14 @@
 <script src="js/jquery.js"></script>
 <script>
 	$.post("/jssdk",{url:"http://wechat.xingentao.top"},function(data){
-		alert(data);
+		wx.config({
+			debug:true,
+			appId:data.appId,
+			timestamp:data.timestamp,
+			nonceStr:data.nonceStr,
+			signature:data.signature,
+			jsApiList:[]
+		})
 	});
 </script>
 </head>

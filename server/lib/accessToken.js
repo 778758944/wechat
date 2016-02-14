@@ -7,6 +7,7 @@
 var https=require("https");
 var crypto=require("crypto");
 var querystring=require("querystring");
+var appId="wx383ded8a7aa722de";
 
 var options={
 	hostname:"api.weixin.qq.com",
@@ -107,7 +108,13 @@ var signature=function(noncert,jsapi,timestamp,url){
 	var sign_str="jsapi_ticket="+jsapi+"&noncert="+noncert+"&timestamp="+timestamp+"&url="+url;
 	var sha1=crypto.createHash("sha1");
 	sha1.update(sign_str);
-	return sha1.digest("hex");
+	var signature=sha1.digest("hex");
+	return {
+		appId:appId,
+		timestamp:timestamp,
+		nonceStr:noncert,
+		signature:signature
+	}
 }
 
 
@@ -122,7 +129,7 @@ var jssdk=function(model,url,Token){
 			var expires=data[0].expires*1000;
 			var timeDiff=new Date()-data[0].time;
 			if(timeDiff<expires){
-				return signature(noncert,data[0].ticket,new Date().getTime(),url);
+				return signature=signature(noncert,data[0].ticket,new Date().getTime(),url);
 			}
 		}
 		getToken(Token,function(token){
@@ -136,7 +143,7 @@ var jssdk=function(model,url,Token){
 		        deal_res(result,function(result){
 		            console.log(result);
 		            console.log(typeof result);
-		            return signature(noncert,data[0].ticket,new Date().getTime(),url);
+		            return signature(noncert,result.ticket,new Date().getTime(),url);
 		        })
 		    });
 		    request.end();
