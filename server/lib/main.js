@@ -204,6 +204,7 @@
 
             var request=http.request(option,function(result){
                 console.log(result.headers);
+                console.log(result.body);
                 multi_fn.deal_res(result,function(result){
                     console.log(result);
                     res.json(result);
