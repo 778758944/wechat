@@ -144,7 +144,7 @@ var jssdk=function(model,url,Token,res){
 
 				    var request=https.request(options,function(result){
 				        deal_res(result,function(result){
-				            console.log(result);
+				        	console.log("new");
 				            result.id=1;
 				            result.time=new Date();
 				            model.upsert(result,function(err,data){
@@ -155,7 +155,6 @@ var jssdk=function(model,url,Token,res){
 				            	console.log(data);
 				            });
 				            var data=signature(noncert,result.ticket,new Date().getTime(),url);
-				            console.dir(data);
 				            res.json(data);
 				        })
 				    });
