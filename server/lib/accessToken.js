@@ -20,13 +20,14 @@ var options={
 var deal_res=function(res,fn){
 	var chunks=[];
 	var size=0;
+	console.log(res.headers);
 	res.on("data",function(d){
 		chunks.push(d);
 		size+=d.length;
 	});
 	res.on("end",function(){
 		var final_buf=Buffer.concat(chunks,size);
-		console.log(final_buf.toString().headers);
+		//console.log(final_buf.toString().headers);
 		var resJson=JSON.parse(final_buf.toString());
 		fn(resJson);
 	});
