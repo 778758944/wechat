@@ -111,7 +111,7 @@ var signature=function(noncert,jsapi,timestamp,url){
 }
 
 
-var jssdk=function(model,url){
+var jssdk=function(model,url,Token){
 	var noncert="xingwentao";
 	var jsapi_ticket=model.find(function(err,data){
 		if(err){
