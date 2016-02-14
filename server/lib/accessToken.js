@@ -24,7 +24,6 @@ var deal_res=function(res,fn){
 	});
 	res.on("end",function(){
 		var final_buf=Buffer.concat(chunks,size);
-		console.log(final_buf.toString());
 		var resJson=JSON.parse(final_buf.toString());
 		fn(resJson);
 	});
