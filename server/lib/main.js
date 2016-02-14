@@ -203,6 +203,7 @@
             }
 
             var request=http.request(option,function(result){
+                console.log(result);
                 multi_fn.deal_res(result,function(result){
                     console.log(result);
                     res.json(result);
