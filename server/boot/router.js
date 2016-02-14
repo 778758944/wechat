@@ -15,6 +15,7 @@ module.exports=function(app){
 	app.use(getPost);
 	var Token=app.models.Token;
 	var YongHu=app.models.YongHu;
+	var JsApi=app.models.JsApi;
 	// request.add_kf("test1@test","小娜","123456",Token);
 	var router=app.loopback.Router();
 	router.get("/wx/coming",function(req,res){

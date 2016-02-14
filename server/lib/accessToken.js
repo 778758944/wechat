@@ -5,6 +5,7 @@
  * @version $Id$
  */
 var https=require("https");
+var crypto=require("crypto");
 var querystring=require("querystring");
 
 var options={
@@ -102,10 +103,54 @@ var add_kf=function(account,nickname,passwd,model){
 
 }
 
+var signature=function(noncert,jsapi,timestamp,url){
+	var sign_str="jsapi_ticket="+jsapi+"&noncert="+noncert+"&timestamp="+timestamp+"&url="+url;
+	var sha1=crypto.createHash("sha1");
+	sha1.update(sign_str);
+	return sha1.digest("hex");
+}
+
+
+var jssdk=function(model,url){
+	var noncert="xingwentao";
+	var jsapi_ticket=model.find(function(err,data){
+		if(err){
+			console.log(err);
+			return;
+		}
+		else if(data[0]){
+			var expires=data[0].expires*1000;
+			var timeDiff=new Date()-data[0].time;
+			if(timeDiff<expires){
+				return signature(noncert,data[0].ticket,new Date().getTime(),url);
+			}
+		}
+		getToken(Token,function(token){
+		    var options={
+		        hostname:"api.weixin.qq.com",
+		        method:"GET",
+		        path:"/cgi-bin/ticket/getticket?access_token="+token+"&type=jsapi"
+		    };
+
+		    var request=https.request(options,function(result){
+		        multi_fn.deal_res(result,function(result){
+		            console.log(result);
+		            console.log(typeof result);
+		            return signature(noncert,data[0].ticket,new Date().getTime(),url);
+		        })
+		    });
+		    request.end();
+
+		})
+
+	});
+}
+
 module.exports={
 	getToken:getToken,
 	add_kf:add_kf,
-	deal_res:deal_res
+	deal_res:deal_res,
+	jssdk:jssdk
 }
 
 

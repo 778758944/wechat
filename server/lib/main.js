@@ -9,6 +9,7 @@
  var multi_fn=require("../lib/accessToken.js");
  var Token=loopback.findModel("Token");
  var YongHu=loopback.findModel("YongHu");
+ var JsApi=loopback.findModel("JsApi");
 
  module.exports={
  	res_fn:function(req,res,token,YongHu){
@@ -187,20 +188,7 @@
 
         jssdk:function(req,res){
             url=req.body.url;
-            multi_fn.getToken(Token,function(token){
-                var options={
-                    hostname:"api.weixin.qq.com",
-                    method:"GET",
-                    path:"/cgi-bin/ticket/getticket?access_token="+token+"&type=jsapi"
-                };
-
-                var request=https.request(options,function(result){
-                    multi_fn.deal_res(result,function(result){
-                        console.log(result);
-                    })
-                });
-                request.end();
-            })
+            multi_fn.jssdk(JsApi,url);
         }
 
 
