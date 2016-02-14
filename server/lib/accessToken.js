@@ -125,8 +125,8 @@ var jssdk=function(model,url,Token,res){
 			console.log(err);
 			return;
 		}
-		console.log(data);
 		else if(data[0]){
+			console.log(data);
 			var expires=data[0].expires*1000;
 			var timeDiff=new Date()-data[0].time;
 			if(timeDiff<expires){
