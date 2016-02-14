@@ -120,7 +120,7 @@ var signature=function(noncert,jsapi,timestamp,url){
 
 var jssdk=function(model,url,Token,res){
 	var noncert="xingwentao";
-	var jsapi_ticket=model.find(function(err,data){
+	model.find(function(err,data){
 		if(err){
 			console.log(err);
 			return;
@@ -133,37 +133,36 @@ var jssdk=function(model,url,Token,res){
 				var data=signature(noncert,data[0].ticket,new Date().getTime(),url);
 				console.log(data);
 				res.json(data);
-				return;
+			}
+			else{
+				getToken(Token,function(token){
+				    var options={
+				        hostname:"api.weixin.qq.com",
+				        method:"GET",
+				        path:"/cgi-bin/ticket/getticket?access_token="+token+"&type=jsapi"
+				    };
+
+				    var request=https.request(options,function(result){
+				        deal_res(result,function(result){
+				            console.log(result);
+				            result.id=1;
+				            result.time=new Date();
+				            model.upsert(result,function(err,data){
+				            	if(err){
+				            		console.log(err);
+				            		return;
+				            	}
+				            	console.log(data);
+				            });
+				            var data=signature(noncert,result.ticket,new Date().getTime(),url);
+				            console.dir(data);
+				            res.json(data);
+				        })
+				    });
+				    request.end();
+				})
 			}
 		}
-		getToken(Token,function(token){
-		    var options={
-		        hostname:"api.weixin.qq.com",
-		        method:"GET",
-		        path:"/cgi-bin/ticket/getticket?access_token="+token+"&type=jsapi"
-		    };
-
-		    var request=https.request(options,function(result){
-		        deal_res(result,function(result){
-		            console.log(result);
-		            result.id=1;
-		            result.time=new Date();
-		            model.upsert(result,function(err,data){
-		            	if(err){
-		            		console.log(err);
-		            		return;
-		            	}
-		            	console.log(data);
-		            });
-		            var data=signature(noncert,result.ticket,new Date().getTime(),url);
-		            console.dir(data);
-		            res.json(data);
-		        })
-		    });
-		    request.end();
-
-		})
-
 	});
 }
 
