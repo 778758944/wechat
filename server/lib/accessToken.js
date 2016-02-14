@@ -125,6 +125,7 @@ var jssdk=function(model,url,Token,res){
 			console.log(err);
 			return;
 		}
+		console.log(data);
 		else if(data[0]){
 			var expires=data[0].expires*1000;
 			var timeDiff=new Date()-data[0].time;
@@ -132,6 +133,7 @@ var jssdk=function(model,url,Token,res){
 				var data=signature(noncert,data[0].ticket,new Date().getTime(),url);
 				console.log(data);
 				res.json(data);
+				return;
 			}
 		}
 		getToken(Token,function(token){
