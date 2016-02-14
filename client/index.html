@@ -28,8 +28,10 @@
 					success:function(res){
 						var latitude=res.latitude;
 						var longitude=res.longitude;
-						alert(latitude);
-						alert(longitude);
+						wx.openLocation({
+							latitude:latitude,
+							longitude:longitude
+						})
 					}
 				})
 			})
