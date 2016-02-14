@@ -96,7 +96,7 @@
                                         YongHu.upsert(obj,function(err,data){
                                                 console.log(data);
                                         })
-                                                res.redirect("/index.html");
+                                                res.redirect("http://wechat.xingwentao.top/index.html");
                                         })
                                 })
                                 request2.end();
@@ -188,7 +188,7 @@
 
         jssdk:function(req,res){
             url=req.body.url;
-            multi_fn.jssdk(JsApi,url);
+            return multi_fn.jssdk(JsApi,url);
         }
 
 
