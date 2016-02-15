@@ -41,9 +41,9 @@
 		animation-iteration-count: 10000;
 		animation-duration: 3s; 
 		animation-timing-function:linear; */
-		-webkit-transform: rotateX(60deg) rotateZ(30deg);
-    -webkit-transform: rotateX(60deg) rotateZ(30deg);
-		transform:rotateX(60deg) rotateZ(30deg);
+		/*-webkit-transform: rotateX(60deg) rotateZ(30deg);*/
+    /*-webkit-transform: rotateX(60deg) rotateZ(30deg);*/
+		/*transform:rotateX(60deg) rotateZ(30deg);*/
 	}
 	.inner{
 		width: 200px;
@@ -57,7 +57,7 @@
 		border: 1px solid #00f;
 	}
   .inner1{
-    -webkit-transform-origin: left bottom 100px;
+/*    -webkit-transform-origin: left bottom 100px;
     -webkit-animation-name:"roll";
     -webkit-animation-iteration-count: 1;
     -webkit-animation-duration: 1s; 
@@ -69,7 +69,7 @@
     animation-name:"roll";
     animation-iteration-count: 10000;
     animation-duration: 1s; 
-    animation-timing-function:ease-out;
+    animation-timing-function:ease-out;*/
    /* transition: transform 2s;*/
   }
   .inner2{
@@ -119,12 +119,12 @@
 <body>
     <div class="stage">
     	<div class="wrap">
-    		<div class="inner inner1"></div>
     		<div class="inner"></div>
+<!--     		<div class="inner"></div>
     		<div class="inner"></div>
     		<div class="inner"></div>
     		<div class="inner inner2"></div>
-    		<div class="inner"></div>
+    		<div class="inner"></div> -->
     	</div>
     </div>
     <button id="btn">开箱</button>
@@ -140,41 +140,46 @@
     }
     var inner=document.querySelectorAll(".inner");
     var len=inner.length;
-    for(var i=0;i<len;i++){
-    	var value="";
-    	if(i==0){
-    		var value="translateZ(100px)";
-    	}
-    	else if(i==1){
-    		var value="rotateY(90deg) translateZ(100px)";
-    	}
-    	else if(i==2){
-    		var value="rotateY(-90deg) translateZ(100px)";
-    	}
-    	else if(i==3){
-    		var value="rotateY(180deg) translateZ(100px)";
-    	}
-    	else if(i==4){
-    		var value="rotateX(90deg) translateZ(100px) ";
-    	}
-    	else if(i==5){
-    		var value="rotateX(-90deg) translateZ(100px)";
-    	}
-    	transform(inner[i],value);
-    }
-    var inner1=document.querySelector(".inner1");
-    setTimeout(function(){
-       transform(inner1,"transform linear 3s","transition");
-       transform(inner1,"left bottom 100px","TransformOrigin"); 
-       alert("kai");     
-    },2000);
-    alert(2);
-    // transform(inner1,"transform 2s","transition");
-    document.querySelector("#btn").onclick=function(){
-      var value="rotateY(-150deg) translateZ(100px)";
-      transform(inner1,value);
+    var value="rotateY(30deg)";
 
-    }
+    transform(inner[0],value);
+
+    // for(var i=0;i<len;i++){
+    // 	var value="";
+    // 	if(i==0){
+    // 		var value="translateZ(100px)";
+    // 	}
+    // 	else if(i==1){
+    // 		var value="rotateY(90deg) translateZ(100px)";
+    // 	}
+    // 	else if(i==2){
+    // 		var value="rotateY(-90deg) translateZ(100px)";
+    // 	}
+    // 	else if(i==3){
+    // 		var value="rotateY(180deg) translateZ(100px)";
+    // 	}
+    // 	else if(i==4){
+    // 		var value="rotateX(90deg) translateZ(100px) ";
+    // 	}
+    // 	else if(i==5){
+    // 		var value="rotateX(-90deg) translateZ(100px)";
+    // 	}
+    // 	transform(inner[i],value);
+    // }
+    // var inner1=document.querySelector(".inner1");
+    // setTimeout(function(){
+    //    transform(inner1,"transform linear 3s","transition");
+    //    transform(inner1,"left bottom 100px","TransformOrigin"); 
+    //    alert("kai");     
+    // },2000);
+    // alert(2);
+    // transform(inner1,"transform 2s","transition");
+    // document.querySelector("#btn").onclick=function(){
+    //   var value="rotateY(-150deg) translateZ(100px)";
+    //   transform(inner1,value);
+
+    // }
+
 
     </script>
 </body>
