@@ -14,6 +14,7 @@
 	var jsonpCallback=function(result){
 		console.log(result);
 	}
+	var angel=1;
     window.onload=function(){
   //   	$.post("/jssdk",{
 		// 	url:location.href
@@ -55,12 +56,12 @@
 		// 	console.log(result);
 		// }
 
-		var geourl="http://api.map.baidu.com/geocoder/v2/?ak=oPdhYNOi8cMkSNIh4t2F1rrH&output=json&callback=jsonpCallback&location=31.22569,121.43966";
+		// var geourl="http://api.map.baidu.com/geocoder/v2/?ak=oPdhYNOi8cMkSNIh4t2F1rrH&output=json&callback=jsonpCallback&location=31.22569,121.43966";
 
-		var JSONP=document.createElement("script");
-		JSONP.type="text/javascript";
-		JSONP.src=geourl;
-		document.getElementsByTagName('head')[0].appendChild(JSONP);
+		// var JSONP=document.createElement("script");
+		// JSONP.type="text/javascript";
+		// JSONP.src=geourl;
+		// document.getElementsByTagName('head')[0].appendChild(JSONP);
 
 
 		
@@ -68,6 +69,25 @@
 		// $.get(geourl,function(data){
 		// 	console.log(data);
 		// })
+
+		var transform=function(ele,value,key){
+			var key=key||"transform";
+			["Moz","O","Ms","Webkit",""].forEach(function(prefix){
+				ele.style[prefix+key]=value;
+			});
+			return ele;
+		}
+		var ele=$(".wrap")[0];
+	    function rotate(angel){
+	    	var value="rotateY("+angel+"deg)";
+	    	transform(ele,value);
+	    	// angel=angel+3;
+	    }
+
+	    var timer=setInterval(function(){
+	    	rotate(angel);
+	    	angel=angel+1;
+	    },10);
 
 
     }
@@ -105,7 +125,7 @@
 		margin: 0;
 	}
 	.inner2{
-		transform:rotateY(180deg);
+		transform:rotateY(180deg) translateZ(0);
 	}
 </style>
 </head>
