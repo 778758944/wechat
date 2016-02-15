@@ -141,8 +141,18 @@
     var inner=document.querySelectorAll(".inner");
     var len=inner.length;
     var value="rotateY(30deg)";
+    var angel=0;
 
-    transform(inner[0],value);
+    function rotate(angel){
+      var value="rotateY("+angel+"deg)";
+      transform(inner[0],value);
+    }
+    var timer=setInterval(function(){
+      rotate(angel);
+      angel=angel+1;
+    },50);
+
+    // transform(inner[0],value);
 
     // for(var i=0;i<len;i++){
     // 	var value="";
