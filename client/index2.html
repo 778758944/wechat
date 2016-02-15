@@ -28,6 +28,8 @@
 		transform-style:preserve-3d;
 /*		width: 100%;
 		height: 100%;*/
+    -webkit-perspective: 800px;
+    perspective:800px;
     width: 200px;
     height: 300px;
 		position: relative;
@@ -50,10 +52,11 @@
 		/*transform:rotateX(60deg) rotateZ(30deg);*/
 	}
 	.inner{
-		width: 200px;
+		width: 100%;
     position: absolute;
     top: 0;
     left: 0;
+    transform:translateZ(-100px);
 		/*height: 200px;*/
 		/*background: rgba(255,0,255,0.3);*/
 		/*position: absolute;*/
@@ -68,7 +71,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    transform:translateZ(100px);
+    transform:translateZ(-500px);
 /*    -webkit-transform-origin: left bottom 100px;
     -webkit-animation-name:"roll";
     -webkit-animation-iteration-count: 1;
@@ -155,16 +158,16 @@
     var inner=document.querySelectorAll(".inner");
     var wrap=document.querySelector(".wrap");
     var len=inner.length;
-    // var value="rotateY(30deg)";
+    var value="rotateY(30deg)";
     var angel=0;
 
     function rotate(angel){
       var value="rotateY("+angel+"deg)";
       var value2=value+" translateZ(10px)";
-      // transform(inner[0],value);
-      // transform(inner[1],value2);
       transform(wrap,value);
     }
+
+    // transform(wrap,value);
     var timer=setInterval(function(){
       rotate(angel);
       angel=angel+1;
