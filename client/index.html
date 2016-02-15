@@ -70,26 +70,22 @@
 		// 	console.log(data);
 		// })
 
-		var transform=function(ele,value,key){
-			var key=key||"transform";
-			["Moz","O","Ms","Webkit",""].forEach(function(prefix){
-				ele.style[prefix+key]=value;
-			});
-			return ele;
-		}
-		var ele=$(".inner")[0];
-	    function rotate(angel){
-	    	var value="rotateY("+angel+"deg)";
-	    	transform(ele,value);
-	    	// angel=angel+3;
-	    }
+		// var transform=function(ele,value,key){
+		// 	var key=key||"transform";
+		// 	["Moz","O","Ms","Webkit",""].forEach(function(prefix){
+		// 		ele.style[prefix+key]=value;
+		// 	});
+		// 	return ele;
+		// }
+		// var ele=$(".inner")[0];
+	 //    function rotate(angel){
+	 //    	var value="rotateY("+angel+"deg)";
+	 //    	transform(ele,value);
+	 //    	// angel=angel+3;
+	 //    }
 
-	    rotate(50);
-
-	    // var timer=setInterval(function(){
-	    // 	rotate(angel);
-	    // 	angel=angel+1;
-	    // },10);
+	 //    rotate(50);
+	 alert(1);
 
 
     }
@@ -124,7 +120,9 @@
 		position: absolute;
 		top: 0;
 		left: 0;
-		background: #f00;
+		background: #00f;
+		-webkit-transform:translateZ(-200px);
+		transform:translateZ(-200px);
 		/*background-image: url(img/1.jpg);*/
 	}
 	.inner{
