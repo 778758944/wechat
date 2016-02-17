@@ -16,41 +16,41 @@
 	}
 	var angel=1;
     window.onload=function(){
-  //   	$.post("/jssdk",{
-		// 	url:location.href
-		// },function(data){
-		// 	wx.config({
-		// 		debug:true,
-		// 		appId:data.appId,
-		// 		timestamp:data.timestamp,
-		// 		nonceStr:data.nonceStr,
-		// 		signature:data.signature,
-		// 		jsApiList:["onMenuShareTimeline","openLocation","getLocation"]
-		// 	});
-		// 	wx.ready(function(){
-		// 		wx.getLocation({
-		// 			type:"wgs84",
-		// 			success:function(res){
-		// 				var latitude=res.latitude;
-		// 				var longitude=res.longitude;
-		// 				var showCity=function(res){
-		// 					console.log(res);
-		// 				}
+    	$.post("/jssdk",{
+			url:location.href
+		},function(data){
+			wx.config({
+				debug:true,
+				appId:data.appId,
+				timestamp:data.timestamp,
+				nonceStr:data.nonceStr,
+				signature:data.signature,
+				jsApiList:["onMenuShareTimeline","openLocation","getLocation"]
+			});
+			wx.ready(function(){
+				wx.getLocation({
+					type:"wgs84",
+					success:function(res){
+						var latitude=res.latitude;
+						var longitude=res.longitude;
+						var showCity=function(res){
+							console.log(res);
+						}
 
-		// 				$("#geo").click(function(){
-		// 					var data={
-		// 						lat:latitude,
-		// 						lng:longitude
-		// 					}
+						$("#geo").click(function(){
+							var data={
+								lat:latitude,
+								lng:longitude
+							}
 
-		// 					$.post("/getcity",data,function(data){
-		// 						console.log(data);
-		// 					})
-		// 				})
-		// 			}
-		// 		})
-		// 	})
-		// });
+							$.post("/getcity",data,function(data){
+								console.log(data);
+							})
+						})
+					}
+				})
+			})
+		});
 
 		// var jsonpCallback=function(result){
 		// 	console.log(result);
@@ -85,7 +85,7 @@
 	 //    }
 
 	 //    rotate(50);
-	 alert(1);
+	 // alert(1);
 
 
     }
