@@ -124,6 +124,7 @@ var signature=function(noncert,jsapi,timestamp,url){
 var jssdk=function(model,url,Token,res){
 	var noncert="xingwentao";
 	model.find(function(err,data){
+		console.log(data);
 		if(err){
 			console.log(err);
 			return;
