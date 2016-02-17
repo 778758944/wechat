@@ -219,7 +219,7 @@
         },
 
         getToken:function(req,res){
-            multi_fn.getToken(token,function(token){
+            multi_fn.getToken(Token,function(token){
                 console.log(token);
                 res.end(token);
             })
