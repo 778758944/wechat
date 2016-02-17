@@ -78,8 +78,9 @@
                 }
                 console.log("kkk");
                 var request=https.request(option,function(result){
-                    console.log(result);
+                    console.log("lll");
                         multi_fn.deal_res(result,function(result){
+                            console.log("aaa");
                                 console.log(result);
                                 var option={
                                         hostname:"api.weixin.qq.com",
