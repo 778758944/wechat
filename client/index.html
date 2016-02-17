@@ -19,6 +19,7 @@
     	$.post("/jssdk",{
 			url:location.href
 		},function(data){
+			alert(data);
 			console.log(data);
 			wx.config({
 				debug:true,
