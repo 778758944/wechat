@@ -129,44 +129,42 @@ var jssdk=function(model,url,Token,res){
 			console.log(err);
 			return;
 		}
-		else if(data[0]){
-			console.log(data);
+		console.log(data);
+		if(data[0]){
 			var expires=data[0].expires_in*1000;
 			var timeDiff=new Date()-data[0].time;
 			if(timeDiff<expires){
 				var data=signature(noncert,data[0].ticket,new Date().getTime(),url);
 				console.log(data);
 				res.json(data);
-			}
-			else{
-				console.log("kkkk");
-				getToken(Token,function(token){
-				    var options={
-				        hostname:"api.weixin.qq.com",
-				        method:"GET",
-				        path:"/cgi-bin/ticket/getticket?access_token="+token+"&type=jsapi"
-				    };
-
-				    var request=https.request(options,function(result){
-				        deal_res(result,function(result){
-				        	console.log("new");
-				            result.id=1;
-				            result.time=new Date();
-				            model.upsert(result,function(err,data){
-				            	if(err){
-				            		console.log(err);
-				            		return;
-				            	}
-				            	console.log(data);
-				            });
-				            var data=signature(noncert,result.ticket,new Date().getTime(),url);
-				            res.json(data);
-				        })
-				    });
-				    request.end();
-				})
+				return;
 			}
 		}
+		getToken(Token,function(token){
+		    var options={
+		        hostname:"api.weixin.qq.com",
+		        method:"GET",
+		        path:"/cgi-bin/ticket/getticket?access_token="+token+"&type=jsapi"
+		    };
+
+		    var request=https.request(options,function(result){
+		        deal_res(result,function(result){
+		        	console.log("new");
+		            result.id=1;
+		            result.time=new Date();
+		            model.upsert(result,function(err,data){
+		            	if(err){
+		            		console.log(err);
+		            		return;
+		            	}
+		            	console.log(data);
+		            });
+		            var data=signature(noncert,result.ticket,new Date().getTime(),url);
+		            res.json(data);
+		        })
+		    });
+		    request.end();
+		})
 	});
 }
 
