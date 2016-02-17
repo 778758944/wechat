@@ -128,7 +128,6 @@ var jssdk=function(model,url,Token,res){
 			console.log(err);
 			return;
 		}
-		console.log(data[0]);
 		else if(data[0]){
 			console.log(data);
 			var expires=data[0].expires_in*1000;
@@ -139,6 +138,7 @@ var jssdk=function(model,url,Token,res){
 				res.json(data);
 			}
 			else{
+				console.log("kkkk");
 				getToken(Token,function(token){
 				    var options={
 				        hostname:"api.weixin.qq.com",
