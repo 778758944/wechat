@@ -76,6 +76,7 @@
                         method:"GET",
                         path:"/sns/oauth2/access_token?appid=wx383ded8a7aa722de&secret=106366d602a1c21995c9c644638ac937&code="+code+"&grant_type=authorization_code"
                 }
+                console.log("kkk");
                 var request=https.request(option,function(result){
                     console.log(result);
                         multi_fn.deal_res(result,function(result){
