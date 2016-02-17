@@ -62,6 +62,7 @@ module.exports=function(app){
 	});
 	router.post("/jssdk",main.jssdk);
 	router.post("/getcity",main.getcity);
+	router.get('/accessToken',main.getToken);
 
 
 	app.use(router);

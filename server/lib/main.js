@@ -216,6 +216,13 @@
                 })
             });
             request.end();
+        },
+
+        getToken:function(req,res){
+            multi_fn.getToken(token,function(token){
+                console.log(token);
+                res.end(token);
+            })
         }
 
 
