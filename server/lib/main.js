@@ -69,6 +69,7 @@
                 res.redirect(url);
         },
         getAuthorToken:function(req,res){
+                console.log("redirect1");
                 console.log(req.query.code);
                 var code=req.query.code;
                 var option={
