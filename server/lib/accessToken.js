@@ -123,6 +123,7 @@ var signature=function(noncert,jsapi,timestamp,url){
 
 var jssdk=function(model,url,Token,res){
 	var noncert="xingwentao";
+	console.log('xingwentao');
 	model.find(function(err,data){
 		if(err){
 			console.log(err);
