@@ -123,12 +123,12 @@ var signature=function(noncert,jsapi,timestamp,url){
 
 var jssdk=function(model,url,Token,res){
 	var noncert="xingwentao";
-	console.log('xingwentao');
 	model.find(function(err,data){
 		if(err){
 			console.log(err);
 			return;
 		}
+		console.log(data[0]);
 		else if(data[0]){
 			console.log(data);
 			var expires=data[0].expires_in*1000;
